@@ -9,6 +9,8 @@ import helmet from "helmet"; // Helmet helps you secure your Express apps by set
 import path from "path";
 import { fileURLToPath } from "url"; //help sets path when configure directories
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
 import {register} from "./controllers/auth.js";
 
 
@@ -44,7 +46,9 @@ const upload = multer({ storage });
 app.post("/auth/register",upload.single("picture"),register)
 
 /*ROUTES*/
-app.use("/auth",authRoutes) //prefix of auth for authRoutes
+app.use("/auth",authRoutes); //prefix of auth for authRoutes
+app.use("/users",userRoutes); // routes for user
+app.use("/posts",postRoutes); //routes for posts
 
 /*MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
