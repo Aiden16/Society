@@ -12,6 +12,8 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import {register} from "./controllers/auth.js";
+import {createPost} from "./controllers/posts.js";
+import { verifyToken } from "./middleware/auth.js";
 
 
 /*CONFIGURATION*/
@@ -43,7 +45,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /*ROUTES WITH FILES*/
-app.post("/auth/register",upload.single("picture"),register)
+app.post("/auth/register",upload.single("picture"),register) //this routes needs to be here as the upload function and the routes to upload file has to be in same file
+app.post("/posts",verifyToken,upload.single("picture"),createPost);
 
 /*ROUTES*/
 app.use("/auth",authRoutes); //prefix of auth for authRoutes
