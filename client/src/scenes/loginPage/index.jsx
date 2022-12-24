@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
-
+import Form from "./Form"
 const LoginPage = () => {
     const theme = useTheme();
     const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
@@ -28,6 +28,7 @@ const LoginPage = () => {
                 <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem", fontStyle:"italic" }}>
                     Welcome to Society, the Social Media for the Society
                 </Typography>
+                <Form/>
             </Box>
         </Box>
     );
