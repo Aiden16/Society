@@ -14,4 +14,4 @@ const UserImage = ({ image, size = "60px" }) => {
   );
 };
 
-export default UserImage;
+export default UserImage;   

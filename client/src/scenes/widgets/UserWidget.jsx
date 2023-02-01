@@ -33,7 +33,7 @@ import {
     useEffect(() => {
       getUser();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  
+    console.log(userId,user);
     if (!user) {
       return null;
     }

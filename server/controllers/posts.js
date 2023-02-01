@@ -53,6 +53,7 @@ export const likePost = async(req,res)=>{
         const {id} = req.params;
         const {userId} = req.body;
         const post = await Post.findById({id});
+        console.log("------------------Reaching--------");
         const isLiked = post.likes.get(userId); //whether the current user has liked the post or not
         if(isLiked){ //if yes
             post.likes.delete(userId); //delete current user id from posts likes map
@@ -66,6 +67,7 @@ export const likePost = async(req,res)=>{
         );
         res.status(200).json(updatedPost);//200 says successful request
     }catch(err){
+        console.log('yha h error')
         res.status(404).json({message:err.message});
     }
 }
